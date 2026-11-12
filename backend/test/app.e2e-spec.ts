@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import { Connection } from 'mongoose';
 
 import { describe, beforeAll, afterAll, it, expect } from '@jest/globals';
 
@@ -27,9 +26,6 @@ describe('Film API (e2e)', () => {
 
   afterAll(async () => {
     if (app) {
-      const connection = app.get<Connection>('MONGO_CONNECTION');
-
-      await connection.close();
       await app.close();
     }
   });
